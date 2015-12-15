@@ -5,28 +5,58 @@
     android:layout_height="match_parent"
     tools:context="rubixstudio.directorychooser.MainActivity">
 
-
-    <HorizontalScrollView
-        android:id="@+id/hsv_directory"
+    <RelativeLayout
+        android:id="@+id/rl_directory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/text_view_directory"
+        <ImageView
+            android:id="@+id/img_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Directory" />
+            android:layout_centerVertical="true"
+            android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha" />
 
-    </HorizontalScrollView>
+        <HorizontalScrollView
+            android:id="@+id/hsv_directory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/img_select_dir"
+            android:layout_toRightOf="@+id/img_back">
+
+            <TextView
+                android:id="@+id/text_view_directory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Directory"
+                android:textColor="#fff" />
+
+        </HorizontalScrollView>
+
+
+        <ImageView
+            android:id="@+id/img_select_dir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:rotation="90"
+            android:src="@drawable/abc_ic_menu_selectall_mtrl_alpha" />
+
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:padding="16dp"
-        android:id="@+id/view"
+        android:id="@+id/rv_dir"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/hsv_directory"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/rl_directory"
+        android:layout_centerHorizontal="true"
+        android:clipToPadding="false"
+        android:padding="16dp" />
 
 
 </RelativeLayout>
