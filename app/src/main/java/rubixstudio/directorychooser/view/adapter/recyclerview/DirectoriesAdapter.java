@@ -13,6 +13,7 @@ import java.io.FileFilter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rubixstudio.directorychooser.R;
 
 /**
@@ -21,16 +22,20 @@ import rubixstudio.directorychooser.R;
 public class DirectoriesAdapter extends RecyclerView.Adapter<DirectoriesAdapter.ViewHolder> {
 
     private Context context;
+    private DirectoryEvents directoryEvents;
     public String rootDir = Environment.getExternalStorageDirectory().getAbsolutePath();
     File[] files;
 
-    public DirectoriesAdapter(Context context) {
+
+    public DirectoriesAdapter(Context context, DirectoryEvents directoryEvents) {
         this.context = context;
+        this.directoryEvents = directoryEvents;
         initFolderList();
     }
 
     private void initFolderList() {
         files = getListFiles(new File(rootDir));
+        directoryEvents.onChooseNewDirectory(rootDir);
     }
 
     @Override
@@ -57,8 +62,14 @@ public class DirectoriesAdapter extends RecyclerView.Adapter<DirectoriesAdapter.
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
-    }
 
+        @OnClick(R.id.row_root)
+        public void onDirectorySelected() {
+            rootDir += "/" + files[getAdapterPosition()].getName();
+            initFolderList();
+            notifyDataSetChanged();
+        }
+    }
 
     private File[] getListFiles(File parentDir) {
         FileFilter fileFilter = new FileFilter() {
@@ -68,6 +79,10 @@ public class DirectoriesAdapter extends RecyclerView.Adapter<DirectoriesAdapter.
         };
         File[] files = parentDir.listFiles(fileFilter);
         return files;
+    }
+
+    public interface DirectoryEvents {
+        public void onChooseNewDirectory(String path);
     }
 
 
