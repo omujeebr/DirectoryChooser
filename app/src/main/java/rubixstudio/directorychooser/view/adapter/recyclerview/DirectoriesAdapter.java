@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.util.Arrays;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,6 +25,7 @@ public class DirectoriesAdapter extends RecyclerView.Adapter<DirectoriesAdapter.
     private Context context;
     private DirectoryEvents directoryEvents;
     public String rootDir = Environment.getExternalStorageDirectory().getAbsolutePath();
+    public String selectedDir = rootDir;
     File[] files;
 
 
@@ -34,8 +36,9 @@ public class DirectoriesAdapter extends RecyclerView.Adapter<DirectoriesAdapter.
     }
 
     private void initFolderList() {
-        files = getListFiles(new File(rootDir));
-        directoryEvents.onChooseNewDirectory(rootDir);
+        files = getListFiles(new File(selectedDir));
+        Arrays.sort(files);
+        directoryEvents.onChooseNewDirectory(selectedDir);
     }
 
     @Override
@@ -53,6 +56,18 @@ public class DirectoriesAdapter extends RecyclerView.Adapter<DirectoriesAdapter.
         return files == null ? 0 : files.length;
     }
 
+    public boolean hasParentDir() {
+        File file = new File(selectedDir);
+        if (selectedDir.equals(rootDir))
+            return false;
+        else {
+            selectedDir = selectedDir.substring(0, selectedDir.lastIndexOf("/"));
+            initFolderList();
+            notifyDataSetChanged();
+            return true;
+        }
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.textView)
@@ -65,7 +80,7 @@ public class DirectoriesAdapter extends RecyclerView.Adapter<DirectoriesAdapter.
 
         @OnClick(R.id.row_root)
         public void onDirectorySelected() {
-            rootDir += "/" + files[getAdapterPosition()].getName();
+            selectedDir += "/" + files[getAdapterPosition()].getName();
             initFolderList();
             notifyDataSetChanged();
         }
@@ -74,7 +89,7 @@ public class DirectoriesAdapter extends RecyclerView.Adapter<DirectoriesAdapter.
     private File[] getListFiles(File parentDir) {
         FileFilter fileFilter = new FileFilter() {
             public boolean accept(File file) {
-                return file.isDirectory();
+                return file.isDirectory() && !file.getName().startsWith(".");
             }
         };
         File[] files = parentDir.listFiles(fileFilter);

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".view.activity.MainActivity">
 
     <RelativeLayout
@@ -54,9 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/rl_directory"
-        android:layout_centerHorizontal="true"
-        android:clipToPadding="false"
-        android:padding="16dp" />
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
