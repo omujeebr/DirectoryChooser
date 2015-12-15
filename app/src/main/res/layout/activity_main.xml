@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="rubixstudio.directorychooser.MainActivity">
+
+
+    <HorizontalScrollView
+        android:id="@+id/hsv_directory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/text_view_directory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Directory" />
+
+    </HorizontalScrollView>
+
+    <android.support.v7.widget.RecyclerView
+        android:padding="16dp"
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/hsv_directory"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
