@@ -1,8 +1,7 @@
-package rubixstudio.directorychooser.view.activity;
+package rubixstudio.libdirectorychooser.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
 
-import butterknife.ButterKnife;
 
 /**
  * Created by mujeeb.r on 15-Dec-15.
@@ -25,7 +24,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void initUi() {
-        ButterKnife.bind(this);
     }
 
 

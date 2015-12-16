@@ -1,4 +1,4 @@
-package rubixstudio.directorychooser.view.adapter.recyclerview;
+package rubixstudio.libdirectorychooser.view.adapter.recyclerview;
 
 import android.content.Context;
 import android.os.Environment;
@@ -12,10 +12,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.util.Arrays;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import rubixstudio.directorychooser.R;
+import rubixstudio.libdirectorychooser.R;
 
 /**
  * Created by mujeeb.r on 15-Dec-15.
@@ -68,17 +65,26 @@ public class DirectoriesAdapter extends RecyclerView.Adapter<DirectoriesAdapter.
         }
     }
 
+    public String getSelectedpath() {
+        return selectedDir;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.textView)
         TextView textView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            textView = (TextView) itemView.findViewById(R.id.textView);
+            itemView.findViewById(R.id.row_root).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onDirectorySelected();
+                }
+            });
         }
 
-        @OnClick(R.id.row_root)
+
         public void onDirectorySelected() {
             selectedDir += "/" + files[getAdapterPosition()].getName();
             initFolderList();

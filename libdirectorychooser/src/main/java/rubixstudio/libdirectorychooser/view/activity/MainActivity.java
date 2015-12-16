@@ -1,21 +1,21 @@
-package rubixstudio.directorychooser.view.activity;
+package rubixstudio.libdirectorychooser.view.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import rubixstudio.directorychooser.R;
-import rubixstudio.directorychooser.view.adapter.recyclerview.DirectoriesAdapter;
+import rubixstudio.libdirectorychooser.R;
+import rubixstudio.libdirectorychooser.view.adapter.recyclerview.DirectoriesAdapter;
 
 public class MainActivity extends BaseActivity implements DirectoriesAdapter.DirectoryEvents {
 
 
-    @Bind(R.id.rv_dir)
     RecyclerView rv_dir;
 
-    @Bind(R.id.text_view_directory)
     TextView text_view_directory;
     private DirectoriesAdapter dirAdapter;
 
@@ -27,6 +27,13 @@ public class MainActivity extends BaseActivity implements DirectoriesAdapter.Dir
         init();
     }
 
+    @Override
+    public void initUi() {
+        super.initUi();
+        rv_dir = (RecyclerView) findViewById(R.id.rv_dir);
+        text_view_directory = (TextView) findViewById(R.id.text_view_directory);
+
+    }
 
     @Override
     public void setAdapter() {
@@ -41,9 +48,21 @@ public class MainActivity extends BaseActivity implements DirectoriesAdapter.Dir
         rv_dir.scrollToPosition(0);
     }
 
+
     @Override
     public void onBackPressed() {
         if (!dirAdapter.hasParentDir())
             super.onBackPressed();
+    }
+
+    public void onDirectorySelected(View v) {
+        Intent intent = new Intent();
+        intent.setData(Uri.parse(dirAdapter.getSelectedpath()));
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
+    public void onDirBackPress(View v) {
+        onBackPressed();
     }
 }
