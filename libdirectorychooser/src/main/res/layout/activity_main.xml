@@ -10,35 +10,32 @@
         android:id="@+id/rl_directory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:padding="16dp">
+        android:layout_alignParentTop="true"
+        android:background="@color/colorAccent">
 
         <ImageView
             android:id="@+id/img_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:onClick="onDirBackPress"
-            android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha" />
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:rotation="90"
+            android:src="@drawable/ic_action_dir_back" />
 
-        <HorizontalScrollView
-            android:id="@+id/hsv_directory"
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/text_view_directory"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
             android:layout_toLeftOf="@+id/img_select_dir"
             android:layout_toRightOf="@+id/img_back"
-            android:scrollbars="none">
-
-            <TextView
-                android:id="@+id/text_view_directory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="Directory"
-                android:textColor="#fff" />
-
-        </HorizontalScrollView>
+            android:ellipsize="start"
+            android:maxLines="2"
+            android:text="Directory"
+            android:textColor="#fff" />
 
 
         <ImageView
@@ -47,9 +44,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:onClick="onDirectorySelected"
-            android:rotation="90"
-            android:src="@drawable/abc_ic_menu_selectall_mtrl_alpha" />
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:src="@drawable/ic_action_dir_submit" />
 
     </RelativeLayout>
 

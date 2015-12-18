@@ -1,6 +1,7 @@
 package rubixstudio.libdirectorychooser.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 
 /**
@@ -13,6 +14,11 @@ public class BaseActivity extends AppCompatActivity {
         initUi();
         setData();
         setAdapter();
+        initActionBar();
+    }
+
+    public void initActionBar() {
+
     }
 
     public void setAdapter() {
@@ -26,5 +32,16 @@ public class BaseActivity extends AppCompatActivity {
     public void initUi() {
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                setResult(RESULT_CANCELED);
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
