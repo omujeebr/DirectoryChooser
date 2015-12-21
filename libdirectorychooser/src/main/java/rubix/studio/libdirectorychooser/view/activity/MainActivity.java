@@ -1,4 +1,4 @@
-package rubixstudio.libdirectorychooser.view.activity;
+package rubix.studio.libdirectorychooser.view.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,8 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import rubixstudio.libdirectorychooser.R;
-import rubixstudio.libdirectorychooser.view.adapter.recyclerview.DirectoriesAdapter;
+import rubix.studio.libdirectorychooser.R;
+import rubix.studio.libdirectorychooser.view.adapter.recyclerview.DirectoriesAdapter;
 
 public class MainActivity extends BaseActivity implements DirectoriesAdapter.DirectoryEvents, View.OnClickListener {
 

@@ -1,4 +1,4 @@
-package rubixstudio.libdirectorychooser;
+package rubix.studio.libdirectorychooser;
 
 import org.junit.Test;
 

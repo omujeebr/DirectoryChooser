@@ -1,12 +1,12 @@
-package rubixstudio.directorychooser.view.activity;
+package rubix.studio.directorychooser.sample.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import rubixstudio.directorychooser.R;
-import rubixstudio.libdirectorychooser.view.activity.MainActivity;
+import rubix.studio.directorychooser.R;
+import rubix.studio.libdirectorychooser.view.activity.MainActivity;
 
 public class LauncherActivity extends AppCompatActivity {
 

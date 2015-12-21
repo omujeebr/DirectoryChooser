@@ -1,4 +1,4 @@
-package rubixstudio.libdirectorychooser.view.adapter.recyclerview;
+package rubix.studio.libdirectorychooser.view.adapter.recyclerview;
 
 import android.content.Context;
 import android.os.Environment;
@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.util.Arrays;
 
-import rubixstudio.libdirectorychooser.R;
+import rubix.studio.libdirectorychooser.R;
 
 /**
  * Created by mujeeb.r on 15-Dec-15.

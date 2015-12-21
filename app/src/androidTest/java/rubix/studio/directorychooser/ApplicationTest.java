@@ -1,4 +1,4 @@
-package rubixstudio.libdirectorychooser;
+package rubix.studio.directorychooser;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

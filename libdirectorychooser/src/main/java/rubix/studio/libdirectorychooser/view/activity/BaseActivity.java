@@ -1,4 +1,4 @@
-package rubixstudio.libdirectorychooser.view.activity;
+package rubix.studio.libdirectorychooser.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
